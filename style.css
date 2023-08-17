@@ -1,4 +1,22 @@
+ body{
+    font-family: 'Lato', sans-serif;
+}
+
+
 .currentScore {
     
     background-color: red;
+}
+#scorePlayer1 ,#scorePlayer2 {
+   color: red;
+   font-size: 5vw;
+   
+}
+#currentScorePlayer1 , #currentScorePlayer2 {
+    color: white;
+    font-size: 25px;
+}
+
+.playerName{
+    font-size : 2vw;
 }
