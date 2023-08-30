@@ -119,31 +119,73 @@ function changePlayer(numPlayer) {
 }
 //=======================
 //dice
-import * as THREE from 'three';
+import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-const scene = new THREE.Scene();
+
+const scene = new THREE.Scene()
+scene.add(new THREE.AxesHelper(5))
+
+const light = new THREE.SpotLight(0xffffff, 1150)
+const light2 = new THREE.SpotLight(0xffffff, 1150)
+light.position.set(5, 5, 5)
+light2.position.set(-100,-10,-5)
+scene.add(light, light2)
+const canvas = document.getElementById('canvasDice');
+
+
+
 const renderer = new THREE.WebGLRenderer(
-{
-   canvas: document.getElementById('canvasDice')
-} );
-const camera = new THREE.PerspectiveCamera(75, canvasDice.width / canvasDice.height, 0.1, 1000);
+   {
+      canvas: canvas
+   }
+)
+const camera = new THREE.PerspectiveCamera(
+    75,
+    canvas.width / canvas.height,
+    0.1,
+    1000
+)
+camera.position.z = 3
+camera.position.x = 1.
+//renderer.shadowMap.enabled = false
+renderer.setSize(canvas.width, canvas.height )
 
-const geometry = new THREE.BoxGeometry(10, 10, 10);
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
-const box = new THREE.Mesh(geometry, material);
 
-scene.add(box);
-scene.background = new THREE.Color(0xffffff);
-camera.position.z = 20;
+const controls = new OrbitControls(camera, renderer.domElement)
+controls.enableDamping = true
 
-renderer.setSize(canvasDice.width, canvasDice.height);
-//document.body.appendChild(renderer.domElement);
-                          
+const loader = new GLTFLoader()
+loader.load(
+    './dice.glb',
+    function (gltf) {
+        scene.add(gltf.scene)
+    },
+    (xhr) => {
+        console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+    },
+    (error) => {
+        console.log(error)
+    }
+)
+scene.background = new THREE.Color(0xffffff)
+
+
+
 function animate() {
-    box.rotation.x += 0.01
-    box.rotation.y += 0.01
-    renderer.render(scene, camera)
     requestAnimationFrame(animate)
+
+    controls.update()
+
+    render()
+
+    
 }
 
-animate();
+function render() {
+    renderer.render(scene, camera)
+}
+
+animate()
+
