@@ -11,13 +11,14 @@ let scorePlayer2 = 0;// score global du player 2
 let diceValue; // valeur du jet de dé
 let currentPlayer; // numero du joueur actif
 let gameStart = false; // 
+let winner = false;
 
 //newGame : initilize the game
 newGame.addEventListener('click', function initializeGame() {
 
    $('#scorePlayer1 ,#scorePlayer2 ,#roundPlayer1 ,#roundPlayer2').text(0);
    currentPlayer = 1;
-   roundPlayer1 = 99;
+   roundPlayer1 = 0;
    roundPlayer2 = 0;
    scorePlayer1 = 0;
    scorePlayer2 = 0;
@@ -33,8 +34,11 @@ function getRandomIntInclusive(min, max) {
 
 // roll the dice
 rollDice.addEventListener('click', () => {
+   
    if (gameStart === true) {
-      diceValue = getRandomIntInclusive(1, 6)
+      diceValue = getRandomIntInclusive(1, 6);
+      //diceValue = 1 // a supprimer
+      cameraDicePosition(diceValue);
       $('#canvasDice').text(diceValue);
       if (diceValue !== 1) {
          if (currentPlayer === 1) {
@@ -61,7 +65,7 @@ rollDice.addEventListener('click', () => {
    } else {
       alert('Appuyez sur NEW GAME pour commencer la partie');
    }
-
+   
 })
 
 
@@ -125,12 +129,12 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 
 const scene = new THREE.Scene()
-scene.add(new THREE.AxesHelper(5))
+//scene.add(new THREE.AxesHelper(5))
 
 const light = new THREE.SpotLight(0xffffff, 1150)
 const light2 = new THREE.SpotLight(0xffffff, 1150)
 light.position.set(5, 5, 5)
-light2.position.set(-100,-10,-5)
+light2.position.set(-5,-5,-5)
 scene.add(light, light2)
 const canvas = document.getElementById('canvasDice');
 
@@ -174,8 +178,8 @@ scene.background = new THREE.Color(0xffffff)
 
 
 function animate() {
-    requestAnimationFrame(animate)
-
+    requestAnimationFrame(animate);
+   
     controls.update()
 
     render()
@@ -189,3 +193,41 @@ function render() {
 
 animate()
 
+function cameraDicePosition(diceValue){
+   switch (diceValue){
+      case 1:
+         camera.position.x = 0
+         camera.position.y = 0
+         camera.position.z = -5
+      break;
+      case 2:
+         
+         camera.position.x = 0
+         camera.position.y = 5
+         camera.position.z = 0
+       
+      break;
+      case 3:
+         camera.position.x = 0
+         camera.position.y = 0
+         camera.position.z = 5
+      break;
+      case 4:
+         camera.position.x = 0
+         camera.position.y = -5
+         camera.position.z = 0
+      break;
+      case 5:
+         camera.position.x = -5
+         camera.position.y = 0
+         camera.position.z = 0
+      break;
+      case 6:
+         camera.position.x = 5
+         camera.position.y = 0
+         camera.position.z = 0
+      break;
+
+   }
+}
+ 
