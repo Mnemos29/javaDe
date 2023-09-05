@@ -19,5 +19,9 @@
 
 .playerName{
     font-size : 2vw;
+    
 }
 
+#player1PointRed {
+    color: red;
+}

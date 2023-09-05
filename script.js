@@ -12,6 +12,7 @@ let diceValue; // valeur du jet de dé
 let currentPlayer; // numero du joueur actif
 let gameStart = false; // 
 let winner = false;
+let messageChangePlayer = 'Appuyez sur NEW GAME pour commencer la partie';
 
 //newGame : initilize the game
 newGame.addEventListener('click', function initializeGame() {
@@ -53,22 +54,16 @@ rollDice.addEventListener('click', () => {
          roundPlayer2 = 0;
          $('#roundPlayer1').text(0);
          $('#roundPlayer2').text(0);
-         if (currentPlayer === 1) {
-            currentPlayer = 2;
-            $('#roundPlayer2').text(0)
-         } else {
-            currentPlayer = 1;
-            $('#roundPlayer1').text(0)
-         }
+         changePlayer(currentPlayer);
          alert('Tour perdu . c\'est au tour du joueur ' + currentPlayer);
       }
    } else {
-      alert('Appuyez sur NEW GAME pour commencer la partie');
+      alert(messageChangePlayer);
    }
    
 })
 
-
+// player red dot
 
 
 // adds the temporary score to the overall score
@@ -90,7 +85,7 @@ hold.addEventListener('click', () => {
          
       }
    } else {
-      alert('Appuyez sur NEW GAME pour commencer la partie');
+      alert(messageChangePlayer);
    }
 })
 
@@ -115,21 +110,26 @@ function changePlayer(numPlayer) {
       roundPlayer2 = 0;
       if (numPlayer === 1) {
          currentPlayer = 2;
+         $('#player2PointRed').css( "fill","#ff3933" );
+         $('#player1PointRed').css( "fill","#ffffff" );
       } else {
          currentPlayer = 1
+         $('#player1PointRed').css( "fill","#ff3933" );
+         $('#player2PointRed').css( "fill","#ffffff" );
       }
    }
 
 }
+
 //=======================
-//dice
+//dice with threejs
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 
 const scene = new THREE.Scene()
-//scene.add(new THREE.AxesHelper(5))
+
 
 const light = new THREE.SpotLight(0xffffff, 1150)
 const light2 = new THREE.SpotLight(0xffffff, 1150)
@@ -151,7 +151,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 )
-camera.position.z = 3
+camera.position.z = 5
 camera.position.x = 1.
 //renderer.shadowMap.enabled = false
 renderer.setSize(canvas.width, canvas.height )
@@ -199,33 +199,38 @@ function cameraDicePosition(diceValue){
          camera.position.x = 0
          camera.position.y = 0
          camera.position.z = -5
+         
       break;
       case 2:
          
          camera.position.x = 0
          camera.position.y = 5
          camera.position.z = 0
-       
+         
       break;
       case 3:
          camera.position.x = 0
          camera.position.y = 0
          camera.position.z = 5
+         
       break;
       case 4:
          camera.position.x = 0
          camera.position.y = -5
          camera.position.z = 0
+        
       break;
       case 5:
          camera.position.x = -5
          camera.position.y = 0
          camera.position.z = 0
+         
       break;
       case 6:
          camera.position.x = 5
          camera.position.y = 0
          camera.position.z = 0
+         
       break;
 
    }
