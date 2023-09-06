@@ -1,20 +1,5 @@
 {
   "dependencies": {
-    "express": "^4.18.2",
-    "jquery": "^3.7.0",
-    "three": "^0.155.0"
-  },
-  "devDependencies": {
-    "vite": "^4.4.9"
-  },
-  "name": "javade",
-  "version": "1.0.0",
-  "main": "script.js",
-  "scripts": {
-    "start": "index.php",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "three": "^0.156.1"
+  }
 }
