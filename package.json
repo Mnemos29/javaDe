@@ -7,6 +7,6 @@
     "vite": "^4.4.9"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node script.js"
   }
 }
