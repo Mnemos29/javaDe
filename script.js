@@ -63,7 +63,7 @@ rollDice.addEventListener('click', () => {
    
 })
 
-// player red dot
+// player red dot :
 
 
 // adds the temporary score to the overall score
@@ -138,7 +138,7 @@ light2.position.set(-5,-5,-5)
 scene.add(light, light2)
 const canvas = document.getElementById('canvasDice');
 
-
+ 
 
 const renderer = new THREE.WebGLRenderer(
    {
