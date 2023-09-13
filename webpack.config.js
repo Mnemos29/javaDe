@@ -8,5 +8,6 @@ let config = {
       filename: "./bundle.js"
     }
   }
-  
-  module.exports = config;
+  module.exports = {
+    mode: 'production',
+  };

@@ -123,15 +123,15 @@ function changePlayer(numPlayer) {
 
 //=======================
 //dice with three.js
-import * as THREE from '/node_modules/three/build/three.module.js';
+import * as three from '/node_modules/three/build/three.module.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 //
-const scene = new THREE.Scene()
+const scene = new three.Scene()
 
 
-const light = new THREE.SpotLight(0xffffff, 1150)
-const light2 = new THREE.SpotLight(0xffffff, 1150)
+const light = new three.SpotLight(0xffffff, 1150)
+const light2 = new three.SpotLight(0xffffff, 1150)
 light.position.set(5, 5, 5)
 light2.position.set(-5,-5,-5)
 scene.add(light, light2)
@@ -139,12 +139,12 @@ const canvas = document.getElementById('canvasDice');
 
  
 
-const renderer = new THREE.WebGLRenderer(
+const renderer = new three.WebGLRenderer(
    {
       canvas: canvas
    }
 )
-const camera = new THREE.PerspectiveCamera(
+const camera = new three.PerspectiveCamera(
     75,
     canvas.width / canvas.height,
     0.1,
@@ -172,7 +172,7 @@ loader.load(
         console.log(error)
     }
 )
-scene.background = new THREE.Color(0xffffff)
+scene.background = new three.Color(0xffffff)
 
 
 
