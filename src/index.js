@@ -123,9 +123,9 @@ function changePlayer(numPlayer) {
 
 //=======================
 //dice with three.js
-import * as THREE from 'three.module.js';
-import { OrbitControls } from 'node_modules/three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from '/node_modules/three/build/three.module.js';
+import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 //
 const scene = new THREE.Scene()
 
