@@ -1,19 +1,11 @@
 {
-  "name": "javade",
-  "version": "1.0.0",
-  "description": "jeu de dé. exercice entrainement studi",
-  "main": "index.php",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "three": "^0.156.1"
+    "jquery": "^3.7.0",
+    "three": "^0.155.0"
   },
   "devDependencies": {
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "vite": "^4.4.9"
   }
 }
+
+
