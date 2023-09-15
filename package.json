@@ -1,11 +1,17 @@
 {
+  "name": "javade",
+  "version": "1.0.0",
+  "description": "play of dice : Studi training ",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexandre",
+  "license": "ISC",
   "dependencies": {
-    "jquery": "^3.7.0",
-    "three": "^0.155.0"
+    "three": "^0.156.1"
   },
   "devDependencies": {
     "vite": "^4.4.9"
   }
 }
-
-
