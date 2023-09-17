@@ -1,5 +1,5 @@
 
-
+//ALEXANDRE DAGORN
 
 const newGame = document.getElementById('newGame');
 const hold = document.getElementById('hold');
