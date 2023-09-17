@@ -162,7 +162,7 @@ controls.enableDamping = true
 
 const loader = new GLTFLoader()
 loader.load(
-    './images/dice.glb',
+    './public/images/dice.glb',
     function (gltf) {
         scene.add(gltf.scene)
     },
